@@ -23,13 +23,38 @@ public class LinkedList {
         this.tail = null;
     }
 
+    public void add(int element){
+        Node n = new Node (element);
+        if (head==null) {head=n; tail=n;}
+        if (count==1) {head=n; n.next=tail;}
+        if (count>1) {head=n; n.next=head.next;}
+            count ++;
+    }
 
+    public void add(int index, int element){
+        Node n = new Node (element);
+        if (index>=count+1) return;
+        if (count==0) {head=n; tail=n;}
+        if (count==1 && index==0) {head=n; n.next=tail;}
+        if (count==1 && index==1) {head.next=n; tail=n;}
+        if (count>1) {
+            Node anterior = head;
+            Node posterior= head.next;
+            for (int i=0; i<index-1; i++){
+                anterior=anterior.next;
+                posterior=posterior.next;
+            }
+            anterior.next=n;
+            n.next=posterior;
+        }
+        if (index==0) head=n;
+        if (index==count) tail=n;
+        count++;
+    }
 
-    void add(int element)
+    public int get(int index){
 
-    void add(int index, int element)
-
-    int get(int index)
+    }
 
     int set(int index, int element)
 
