@@ -29,6 +29,10 @@ public class AppMyLinkedList {
         System.out.println(minhaLista.show());
         System.out.println(minhaLista.size());
 
+        int [] listaRev = minhaLista.getBackToFrontProfessora();
+        System.out.println(listaRev[0] + " " + listaRev[1] + " " + listaRev[2]);
+
+
         minhaLista.add(12);
         minhaLista.add(13);
         minhaLista.add(15);

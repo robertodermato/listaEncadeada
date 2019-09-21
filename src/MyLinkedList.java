@@ -218,5 +218,32 @@ public class MyLinkedList {
         head = prev;
     }
 
+    // Não está funcionando
+    public int[] auxGetBackToFront(){
+        int [] novaLista = new int [count];
+        if (head==null) return novaLista;
+        return getBackToFront(novaLista, 0, head);
+
+    }
+    private int[] getBackToFront(int[] novaLista, int x, Node nodo){
+        if (x>=count) return novaLista;
+        novaLista[count-(x-1)] = nodo.element;
+        return getBackToFront(novaLista, x+1, nodo.next);
+
+    }
+
+    //Funciona
+    public int [] getBackToFrontProfessora(){
+        int [] v = new int[count];
+        getBackToFrontProfessoraV(head, v, count-1);
+        return v;
+    }
+
+    public void getBackToFrontProfessoraV (Node n, int[] v, int i){
+        if (n!=null) {
+            getBackToFrontProfessoraV(n.next,v,i-1);
+            v[i]=n.element;
+        }
+    }
 
 }
