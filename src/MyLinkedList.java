@@ -1,6 +1,5 @@
 public class MyLinkedList {
 
-
     //Classe Node
     private class Node {
 
@@ -18,7 +17,7 @@ public class MyLinkedList {
     private Node tail;
     private int count;
 
-    public LinkedList() {
+    public MyLinkedList() {
         this.count = 0;
         this.head = null;
         this.tail = null;
@@ -29,67 +28,69 @@ public class MyLinkedList {
         if (head == null) {
             head = n;
             tail = n;
+            count++;
+            return;
         }
         if (count == 1) {
             head = n;
             n.next = tail;
+            count++;
+            return;
         }
         if (count > 1) {
+            n.next = head;
             head = n;
-            n.next = head.next;
         }
         count++;
     }
 
     public void add(int index, int element) {
         Node n = new Node(element);
-        if (index >= count + 1) return;
-        if (count == 0) {
-            head = n;
-            tail = n;
+        if (index==0) {add(element); return;}
+        Node temp= head;
+        for (int i=0; i<index-1; i++){
+            temp=temp.next;
         }
-        if (count == 1 && index == 0) {
-            head = n;
-            n.next = tail;
-        }
-        if (count == 1 && index == 1) {
-            head.next = n;
-            tail = n;
-        }
-        if (count > 1) {
-            Node anterior = head;
-            Node posterior = head.next;
-            for (int i = 0; i < index - 1; i++) {
-                anterior = anterior.next;
-                posterior = posterior.next;
-            }
-            anterior.next = n;
-            n.next = posterior;
-        }
-        if (index == 0) head = n;
-        if (index == count) tail = n;
-        count++;
+        n.next=temp.next;
+        temp.next=n;
     }
 
-    public int get(int index) {
+    public boolean isEmpty() {        return count == 0;    }
 
+    public int size() {        return count;    }
+
+    public int set(int index, int element)
+    /*
+
+
+        boolean remove(int element)
+
+        int removeByIndex(int index)
+
+        boolean contains(int element)
+
+    public int get(int index) {    }
+
+        int indexOf(int element)
+    */
+    public void clear() {
+        this.head = null;
+        this.tail = null;
     }
 
-    int set(int index, int element)
-
-    boolean remove(int element)
-
-    int removeByIndex(int index)
-
-    boolean isEmpty()
-
-    int size()
-
-    boolean contains(int element)
-
-    int indexOf(int element)
-
-    void clear()
+    public String show() {
+        if (count == 0) return "A lista está vazia";
+        String lista = "";
+        Node temp = head;
+        int indice = 0;
+        while (temp.next != null) {
+            lista = lista + "\nElemento de índice (" + indice + "): " + temp.element;
+            indice++;
+            temp=temp.next;
+        }
+        lista=lista + "\nElemento de índice (" + indice + "): " + temp.element;
+        return lista;
+    }
 
 
 }
