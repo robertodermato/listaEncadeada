@@ -80,81 +80,89 @@ public class MyLinkedList {
         if (isEmpty()) return false;
         Node anterior = head;
         Node posterior = head.next;
-        if (anterior.element==element){
-            head=posterior;
+        if (anterior.element == element) {
+            head = posterior;
             count--;
             return true;
         }
         do {
-            if (posterior.element==element){
-                anterior.next=posterior.next;
+            if (posterior.element == element) {
+                anterior.next = posterior.next;
                 count--;
                 return true;
             }
-            anterior=anterior.next;
-            posterior=posterior.next;
+            anterior = anterior.next;
+            posterior = posterior.next;
         } while (posterior.next != null);
-        if (posterior.element==element){
-            anterior.next=null;
-            tail=anterior;
+        if (posterior.element == element) {
+            anterior.next = null;
+            tail = anterior;
             count--;
             return true;
         }
         return false;
     }
 
-    public int removeByIndex(int index){
+    public int removeByIndex(int index) {
         if (isEmpty()) return 1;
-        if (index>=size()) return 1;
+        if (index >= size()) return 1;
 
         Node anterior = head;
         Node posterior = head.next;
 
-        if (index==0) {
-            head=posterior;
+        if (index == 0) {
+            head = posterior;
             count--;
             return 1;
         }
 
-        for (int i=0; i<index-1; i++){
-            anterior=anterior.next;
-            posterior=posterior.next;
+        for (int i = 0; i < index - 1; i++) {
+            anterior = anterior.next;
+            posterior = posterior.next;
         }
 
-        anterior.next=posterior.next;
+        anterior.next = posterior.next;
         count--;
 
         return 1;
     }
 
-    public boolean contains(int element){
+    public boolean contains(int element) {
         if (isEmpty()) return false;
         Node n = head;
 
-        while (n.next!=null){
-            if (n.element==element) return true;
-            n=n.next;
+        while (n.next != null) {
+            if (n.element == element) return true;
+            n = n.next;
         }
         return false;
     }
 
     public int get(int index) {
         if (isEmpty()) return -1;
-        if (index>=size()) return -1;
+        if (index >= size()) return -1;
 
         Node n = head;
 
-        for (int i=0; i<index; i++){
-            n=n.next;
+        for (int i = 0; i < index; i++) {
+            n = n.next;
         }
         return n.element;
     }
-    /*
 
+    public int indexOf(int element) {
+        if (isEmpty()) return -1;
+        Node n = head;
+        int indice = 0;
+        while (n.next!=null){
+            if (n.element==element) return indice;
+            n=n.next;
+            indice++;
+        }
+        if (n.element==element) return indice;
+        return -1;
+    }
 
-
-        int indexOf(int element)
-    */
     public void clear() {
         this.head = null;
         this.tail = null;

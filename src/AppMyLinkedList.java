@@ -38,7 +38,10 @@ public class AppMyLinkedList {
 
         int el = minhaLista.get(3);
 
-        System.out.println(el);
+        System.out.println("Elemento do índice é: " + el);
+
+        int indice = minhaLista.indexOf(15);
+        System.out.println("Indíce do elemento é: " + indice);
 
     }
 }
