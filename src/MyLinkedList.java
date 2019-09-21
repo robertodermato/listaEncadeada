@@ -154,12 +154,12 @@ public class MyLinkedList {
         if (isEmpty()) return -1;
         Node n = head;
         int indice = 0;
-        while (n.next!=null){
-            if (n.element==element) return indice;
-            n=n.next;
+        while (n.next != null) {
+            if (n.element == element) return indice;
+            n = n.next;
             indice++;
         }
-        if (n.element==element) return indice;
+        if (n.element == element) return indice;
         return -1;
     }
 
@@ -186,19 +186,36 @@ public class MyLinkedList {
     //com os elementos da lista original entre fromIndex (inclusivo)
     //e toIndex (exclusivo).
 
-    public int[] subList (int fromIndex, int toIndex){
-        int [] novaLista = new int[toIndex-fromIndex];
+    public int[] subList(int fromIndex, int toIndex) {
+        int[] novaLista = new int[toIndex - fromIndex];
         Node n = head;
         int indice = 0;
         int indiceNovaLista = 0;
 
-        for (int i=0; i<novaLista.length;){
-            if (indice>=fromIndex){novaLista[indiceNovaLista] = n.element; indiceNovaLista++; i++;}
-            n=n.next;
+        for (int i = 0; i < novaLista.length; ) {
+            if (indice >= fromIndex) {
+                novaLista[indiceNovaLista] = n.element;
+                indiceNovaLista++;
+                i++;
+            }
+            n = n.next;
             indice++;
         }
 
         return novaLista;
+    }
+
+    public void reverse() {
+        Node prev = null;
+        Node current = head;
+        Node next = null;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
     }
 
 

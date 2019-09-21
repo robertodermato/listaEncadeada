@@ -46,5 +46,9 @@ public class AppMyLinkedList {
         int[] novaLista = minhaLista.subList(2,4);
 
         System.out.println("Sublista: " + novaLista[0] + " " + novaLista[1]);
+
+        minhaLista.reverse();
+
+        System.out.println("Lista invertida: " + minhaLista.show());
     }
 }
