@@ -59,7 +59,14 @@ public class MyLinkedList {
 
     public int size() {        return count;    }
 
-    public int set(int index, int element)
+    public int set(int index, int element){
+        Node n = head;
+        for (int i=0; i<index; i++){
+            n=n.next;
+        }
+        n.element=element;
+        return element;
+    }
     /*
 
 

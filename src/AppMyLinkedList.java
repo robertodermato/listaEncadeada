@@ -10,6 +10,9 @@ public class AppMyLinkedList {
         minhaLista.add(1,4);
         minhaLista.add(0,8);
 
+        System.out.println(minhaLista.show());
+
+        int i = minhaLista.set(2, 6);
 
         System.out.println(minhaLista.show());
 
