@@ -29,5 +29,16 @@ public class AppMyLinkedList {
         System.out.println(minhaLista.show());
         System.out.println(minhaLista.size());
 
+        minhaLista.add(12);
+        minhaLista.add(13);
+        minhaLista.add(15);
+
+        System.out.println(minhaLista.show());
+        System.out.println(minhaLista.size());
+
+        int el = minhaLista.get(3);
+
+        System.out.println(el);
+
     }
 }

@@ -126,16 +126,32 @@ public class MyLinkedList {
 
         return 1;
     }
+
+    public boolean contains(int element){
+        if (isEmpty()) return false;
+        Node n = head;
+
+        while (n.next!=null){
+            if (n.element==element) return true;
+            n=n.next;
+        }
+        return false;
+    }
+
+    public int get(int index) {
+        if (isEmpty()) return -1;
+        if (index>=size()) return -1;
+
+        Node n = head;
+
+        for (int i=0; i<index; i++){
+            n=n.next;
+        }
+        return n.element;
+    }
     /*
 
 
-
-
-
-
-        boolean contains(int element)
-
-    public int get(int index) {    }
 
         int indexOf(int element)
     */
