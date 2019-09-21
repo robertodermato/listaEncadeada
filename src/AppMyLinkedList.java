@@ -43,5 +43,8 @@ public class AppMyLinkedList {
         int indice = minhaLista.indexOf(15);
         System.out.println("Indíce do elemento é: " + indice);
 
+        int[] novaLista = minhaLista.subList(2,4);
+
+        System.out.println("Sublista: " + novaLista[0] + " " + novaLista[1]);
     }
 }

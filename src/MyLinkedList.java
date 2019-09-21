@@ -182,5 +182,24 @@ public class MyLinkedList {
         return lista;
     }
 
+    //int[] subList(int fromIndex, int toIndex), que retorna um arranjo
+    //com os elementos da lista original entre fromIndex (inclusivo)
+    //e toIndex (exclusivo).
+
+    public int[] subList (int fromIndex, int toIndex){
+        int [] novaLista = new int[toIndex-fromIndex];
+        Node n = head;
+        int indice = 0;
+        int indiceNovaLista = 0;
+
+        for (int i=0; i<novaLista.length;){
+            if (indice>=fromIndex){novaLista[indiceNovaLista] = n.element; indiceNovaLista++; i++;}
+            n=n.next;
+            indice++;
+        }
+
+        return novaLista;
+    }
+
 
 }
