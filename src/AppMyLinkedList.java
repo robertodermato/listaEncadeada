@@ -11,11 +11,23 @@ public class AppMyLinkedList {
         minhaLista.add(0,8);
 
         System.out.println(minhaLista.show());
+        System.out.println(minhaLista.size());
 
         int i = minhaLista.set(2, 6);
 
         System.out.println(minhaLista.show());
+        System.out.println(minhaLista.size());
 
+        boolean rem = minhaLista.remove(8);
+
+
+        System.out.println(minhaLista.show());
+        System.out.println(minhaLista.size());
+
+        int j = minhaLista.removeByIndex(3);
+
+        System.out.println(minhaLista.show());
+        System.out.println(minhaLista.size());
 
     }
 }

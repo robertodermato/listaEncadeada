@@ -46,33 +46,92 @@ public class MyLinkedList {
 
     public void add(int index, int element) {
         Node n = new Node(element);
-        if (index==0) {add(element); return;}
-        Node temp= head;
-        for (int i=0; i<index-1; i++){
-            temp=temp.next;
+        if (index == 0) {
+            add(element);
+            return;
         }
-        n.next=temp.next;
-        temp.next=n;
+        Node temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        n.next = temp.next;
+        temp.next = n;
+        count++;
     }
 
-    public boolean isEmpty() {        return count == 0;    }
+    public boolean isEmpty() {
+        return count == 0;
+    }
 
-    public int size() {        return count;    }
+    public int size() {
+        return count;
+    }
 
-    public int set(int index, int element){
+    public int set(int index, int element) {
         Node n = head;
-        for (int i=0; i<index; i++){
-            n=n.next;
+        for (int i = 0; i < index; i++) {
+            n = n.next;
         }
-        n.element=element;
+        n.element = element;
         return element;
+    }
+
+    public boolean remove(int element) {
+        if (isEmpty()) return false;
+        Node anterior = head;
+        Node posterior = head.next;
+        if (anterior.element==element){
+            head=posterior;
+            count--;
+            return true;
+        }
+        do {
+            if (posterior.element==element){
+                anterior.next=posterior.next;
+                count--;
+                return true;
+            }
+            anterior=anterior.next;
+            posterior=posterior.next;
+        } while (posterior.next != null);
+        if (posterior.element==element){
+            anterior.next=null;
+            tail=anterior;
+            count--;
+            return true;
+        }
+        return false;
+    }
+
+    public int removeByIndex(int index){
+        if (isEmpty()) return 1;
+        if (index>=size()) return 1;
+
+        Node anterior = head;
+        Node posterior = head.next;
+
+        if (index==0) {
+            head=posterior;
+            count--;
+            return 1;
+        }
+
+        for (int i=0; i<index-1; i++){
+            anterior=anterior.next;
+            posterior=posterior.next;
+        }
+
+        anterior.next=posterior.next;
+        count--;
+
+        return 1;
     }
     /*
 
 
-        boolean remove(int element)
 
-        int removeByIndex(int index)
+
+
 
         boolean contains(int element)
 
@@ -93,9 +152,9 @@ public class MyLinkedList {
         while (temp.next != null) {
             lista = lista + "\nElemento de índice (" + indice + "): " + temp.element;
             indice++;
-            temp=temp.next;
+            temp = temp.next;
         }
-        lista=lista + "\nElemento de índice (" + indice + "): " + temp.element;
+        lista = lista + "\nElemento de índice (" + indice + "): " + temp.element;
         return lista;
     }
 
