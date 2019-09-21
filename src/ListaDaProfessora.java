@@ -52,11 +52,7 @@ public class ListaDaProfessora {
      * @param element elemento a ser inserido
      * @throws IndexOutOfBoundsException se (index < 0 || index > size())
      */
-    public void add(int index, Integer element) {
 
-        // Desenvolva o algoritmo para este metodo
-
-    }
 
     /**
      * Retorna o elemento de uma determinada posicao da lista
@@ -174,47 +170,7 @@ public class ListaDaProfessora {
         count = 0;
     }
 
-    /**
-     * Remove o elemento de uma determinada posicao da lista
-     *
-     * @param index a posicao da lista
-     * @return o elemento que foi removido da lista
-     * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
-     */
-    public Integer removeByIndex(int index) {
 
-        // Desenvolva o algoritmo para este metodo
-        return 0;
-
-    }
-
-    /**
-     * Retorna o indice da primeira ocorrencia do elemento na lista, ou -1 se a
-     * lista nao contem o elemento
-     *
-     * @param element o elemento a ser buscado
-     * @return o indice da primeira ocorrencia do elemento na lista, ou -1 se a
-     * lista nao contem o elemento
-     */
-    public int indexOf(Integer element) {
-
-        // Desenvolva o algoritmo para este metodo
-        return 0;
-
-    }
-
-    /**
-     * Retorna true se a lista contem o elemento especificado
-     *
-     * @param element o elemento a ser testado
-     * @return true se a lista contem o elemento especificado
-     */
-    public boolean contains(Integer element) {
-
-        // Desenvolva o algoritmo para este metodo
-        return false;
-
-    }
 
     @Override
     public String toString() {
@@ -230,6 +186,130 @@ public class ListaDaProfessora {
 
         return s.toString();
     }
+
+    /**
+     * Insere um elemento em uma determinada posicao da lista
+     *
+     * @param index a posicao da lista onde o elemento sera inserido
+     * @param element elemento a ser inserido
+     * @throws IndexOutOfBoundsException se (index < 0 || index > size())
+     */
+    public void add(int index, Integer element) {
+        // Verifica se o indice e valido
+        if (index<0 || index>count)
+            throw new IndexOutOfBoundsException();
+
+        // Cria o nodo
+        Node n = new Node(element);
+
+        // Insere o novo nodo na lista
+        if (index==0) { // insercao no inicio
+            if (count==0) { // eh o primeiro elemento a ser inserido
+                tail = n;
+            }
+            else {
+                n.next = head;
+            }
+            head = n;
+        }
+        else if (index==count) { // insercao no fim
+            tail.next = n;
+            tail = n;
+        }
+        else { // insercao no meio
+            Node ant = head;
+            for (int i=0; i<index-1; i++) {
+                ant = ant.next;
+            }
+            n.next = ant.next;
+            ant.next = n;
+        }
+
+        count++; // Atualiza o contador
+    }
+
+
+
+
+
+
+
+    /**
+     * Remove o elemento de uma determinada posicao da lista
+     *
+     * @param index a posicao da lista
+     * @return o elemento que foi removido da lista
+     * @throws IndexOutOfBoundsException se (index < 0 || index >= size())
+     */
+    public Integer removeByIndex(int index) {
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        Node aux = head;
+        if (index == 0) {
+            if (tail == head) // se tiver apenas um elemento
+            {
+                tail = null;
+            }
+            head = head.next;
+            count--;
+            return aux.element;
+        }
+        int c = 0;
+        while (c < index - 1) {
+            aux = aux.next;
+            c++;
+        }
+        Integer element = aux.next.element;
+        if (tail == aux.next) {
+            tail = aux;
+        }
+        aux.next = aux.next.next;
+        count--;
+        return element;
+    }
+
+    /**
+     * Retorna o indice da primeira ocorrencia do elemento na lista, ou -1 se a
+     * lista nao contem o elemento
+     *
+     * @param element o elemento a ser buscado
+     * @return o indice da primeira ocorrencia do elemento na lista, ou -1 se a
+     * lista nao contem o elemento
+     */
+    public int indexOf(Integer element) {
+        int index = 0;
+        Node aux = head;
+        while (aux != null) {
+            if (aux.element.equals(element)) {
+                return (index);
+            }
+            aux = aux.next;
+            index++;
+        }
+        return -1;
+    }
+
+    /**
+     * Retorna true se a lista contem o elemento especificado
+     *
+     * @param element o elemento a ser testado
+     * @return true se a lista contem o elemento especificado
+     */
+    public boolean contains(Integer element) {
+        Node aux = head;
+        while (aux != null) {
+            if (aux.element.equals(element)) {
+                return (true);
+            }
+            aux = aux.next;
+        }
+        return false;
+    }
+
+
+
 
 }
 
