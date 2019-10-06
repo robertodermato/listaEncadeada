@@ -32,48 +32,63 @@ public class LinkedListSign {
         count = 0;
     }
 
-    public void add(Integer i) {
+    public void add(Integer i){
         Node aux = new Node(i);
         if (prim == null) {
             prim = aux;
         } else {
+            //como o exercício não especifica onde colocar o 0 estou colocando junto dos positivos
+            if(i>=0){
+                Node n = prim;
+                for(int j=0; j<count;j++){
+                    if(n.proxPos==null){ n.proxPos = aux; }
+                    n=n.prox;
+                }
+            }else{
+                Node n = prim;
+                for(int j=0; j<count;j++){
+                    if(n.proxNeg==null){ n.proxNeg = aux; }
+                    n=n.prox;
+                }
+            }
             ult.prox = aux;
         }
         ult = aux;
         count++;
     }
 
-    public String soPositivos() {
+    public String soPositivos(){
         StringBuilder s = new StringBuilder();
 
         Node aux = prim;
 
-        if (aux.dado > 0) s.append(aux.dado.toString());
-
         while (aux != null) {
+            if(aux.dado>=0){
+                s.append(aux.dado.toString());
+                s.append("\n");
+            }
             aux = aux.proxPos;
-            s.append(aux.dado.toString());
-            s.append("\n");
         }
 
         return s.toString();
     }
 
-    public String soNegativos() {
+    public String soNegativos(){
         StringBuilder s = new StringBuilder();
 
         Node aux = prim;
 
-        if (aux.dado < 0) s.append(aux.dado.toString());
-
         while (aux != null) {
+            if(aux.dado<0){
+                s.append(aux.dado.toString());
+                s.append("\n");
+            }
             aux = aux.proxNeg;
-            s.append(aux.dado.toString());
-            s.append("\n");
         }
 
         return s.toString();
     }
+
 
     @Override
     public String toString() {
