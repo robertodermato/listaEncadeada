@@ -1,6 +1,7 @@
 public class AppMyLinkedList {
     public static void main (String args[]){
 
+        /*
         MyLinkedList minhaLista = new MyLinkedList();
 
         minhaLista.add(2);
@@ -54,5 +55,20 @@ public class AppMyLinkedList {
         minhaLista.reverse();
 
         System.out.println("Lista invertida: " + minhaLista.show());
+
+
+         */
+
+        ListaDaProfessora lista1 = new ListaDaProfessora();
+        lista1.add(1);
+        lista1.add(5);
+        lista1.add(7);
+        lista1.add(9);
+
+        int[] lista1vet = lista1.toArray();
+
+        for (int m=0; m<lista1vet.length;m++){
+            System.out.println(lista1vet[m] + " ");
+        }
     }
 }
