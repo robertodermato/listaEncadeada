@@ -26,15 +26,18 @@ public class Set {
     // repetidos. Os métodos do TAD conjunto para números inteiros são apresentados a seguir. Escreva os algoritmos para a
     // classe Set que utilizem estruturas encadeadas.
 
-    //   class Set
     //Retorna false se v ja pertence ao conjunto
     public boolean insere(Integer valor) {
         if (pertence(valor)) return false;
+
         Node novo = new Node(valor);
+
         if (count == 0) {
             head = novo;
+        } else {
+            tail.next = novo;
         }
-        tail.next = novo;
+
         tail = novo;
         count++;
         return true;
@@ -97,6 +100,21 @@ public class Set {
             aux = aux.next;
         }
         return intersec;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+
+        Node aux = head;
+
+        while (aux != null) {
+            s.append(aux.element.toString());
+            s.append("\n");
+            aux = aux.next;
+        }
+
+        return s.toString();
     }
 
 }
